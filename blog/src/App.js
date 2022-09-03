@@ -17,10 +17,14 @@ function App() {
   return (
     <div className="App">
       <div className="black-nav">
-        <h4>React Blog</h4>dddddd
+        <h4>React Blog</h4>
         </div>
 
-        <button>가나다순 정렬</button>
+        <button onClick={()=>{
+          let copy =[...글제목];
+          copy.sort();
+          글제목변경(copy)
+        }}>가나다순 정렬</button>
 
           <button onClick={()=>{
             let copy= [...글제목];
@@ -40,8 +44,30 @@ function App() {
           <h4>{글제목[2]}</h4>
           <p>2월 17일 발행</p>
         </div>
+
+       <Modal></Modal>
+       <Modal2></Modal2>
         </div>
   );
+}
+function Modal() {
+  return (
+    <div className='modal'>
+          <h4>제목</h4>
+          <p>날짜</p>
+          <p>상세내용</p>
+        </div>
+  )
+}
+
+function Modal2() {
+  return (
+    <div className='modal'>
+      <h4>댓글</h4>
+      <p>작성자</p>
+      <p>댓글 내용</p>
+    </div>
+  )
 }
 
 export default App;
