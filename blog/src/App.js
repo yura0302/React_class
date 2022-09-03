@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <div className="black-nav">
-        <h4>React Blog</h4>
+        <h4>React Blog</h4>dddddd
         </div>
         <div className='list'>
           <h4>{글제목[0]}</h4>
