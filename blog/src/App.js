@@ -9,7 +9,6 @@ function App() {
     "파이썬 독학",
   ]);
 
-
   let [따봉, 따봉변경] = useState(0);
 
   return (
@@ -19,7 +18,14 @@ function App() {
       </div>
       <div className="list">
         <h4>
-          {글제목[0]} <span onClick={함수}>❤️‍🔥</span>
+          {글제목[0]}{" "}
+          <span
+            onClick={() => {
+              따봉변경(따봉 + 1);
+            }}
+          >
+            ❤️‍🔥
+          </span>
           {따봉}
         </h4>
         <p>10월 14일 발행</p>
