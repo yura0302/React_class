@@ -10,9 +10,8 @@ function App() {
   ]);
 
   let [따봉, 따봉변경] = useState([0, 0, 0]);
-
   let [modal, setModal] = useState(false);
-
+  let [modalTitle, setModalTitle] = useState(0);
   return (
     <div className="App">
       <div className="black-nav">
@@ -45,6 +44,7 @@ function App() {
             <h4
               onClick={() => {
                 setModal(modal ? false : true);
+                setModalTitle(i);
               }}
             >
               {글제목[i]}
@@ -63,7 +63,13 @@ function App() {
           </div>
         );
       })}
-      {modal ? <Modal 글제목={글제목} 글제목변경={글제목변경} /> : null}
+      {modal ? (
+        <Modal
+          글제목={글제목}
+          modalTitle={modalTitle}
+          글제목변경={글제목변경}
+        />
+      ) : null}
     </div>
   );
 }
@@ -71,7 +77,7 @@ function App() {
 const Modal = (props) => {
   return (
     <div className="modal">
-      <h4>{props.글제목[0]}</h4>
+      <h4>{props.글제목[props.modalTitle]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
       <button
