@@ -9,7 +9,8 @@ function App() {
     "파이썬 독학",
   ]);
 
-  let [따봉, 따봉변경] = useState(0);
+  let [따봉, 따봉변경] = useState([0, 0, 0]);
+
   let [modal, setModal] = useState(false);
 
   return (
@@ -38,45 +39,48 @@ function App() {
         수정
       </button>
 
-      <div className="list">
-        <h4>
-          {글제목[0]}{" "}
-          <span
-            onClick={() => {
-              따봉변경(따봉 + 1);
-            }}
-          >
-            ❤️‍🔥
-          </span>
-          {따봉}
-        </h4>
-        <p>10월 14일 발행</p>
-      </div>
-      <div className="list">
-        <h4>{글제목[1]}</h4>
-        <p>10월 14일 발행</p>
-      </div>
-      <div
-        onClick={() => {
-          setModal(modal == true ? false : true);
-        }}
-        className="list"
-      >
-        <h4>{글제목[2]}</h4>
-        <p>10월 14일 발행</p>
-      </div>
-
-      {modal == true ? <Modal></Modal> : null}
+      {글제목.map(function (item, i) {
+        return (
+          <div className="list">
+            <h4
+              onClick={() => {
+                setModal(modal ? false : true);
+              }}
+            >
+              {글제목[i]}
+              <span
+                onClick={() => {
+                  let copy3 = [...따봉];
+                  copy3[i] = copy3[i] + 1;
+                  따봉변경(copy3);
+                }}
+              >
+                ❤️‍🔥
+              </span>
+              {따봉[i]}
+            </h4>
+            <p>10월 14일 발행</p>
+          </div>
+        );
+      })}
+      {modal ? <Modal 글제목={글제목} 글제목변경={글제목변경} /> : null}
     </div>
   );
 }
 
-const Modal = () => {
+const Modal = (props) => {
   return (
     <div className="modal">
-      <h4>제목</h4>
+      <h4>{props.글제목[0]}</h4>
       <p>날짜</p>
       <p>상세내용</p>
+      <button
+        onClick={() => {
+          props.글제목변경(["여자 코트 추천", "강남 우동맛집", "파이썬 독학"]);
+        }}
+      >
+        글 수정
+      </button>
     </div>
   );
 };
