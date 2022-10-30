@@ -12,6 +12,7 @@ function App() {
   let [따봉, 따봉변경] = useState([0, 0, 0]);
   let [modal, setModal] = useState(false);
   let [modalTitle, setModalTitle] = useState(0);
+  let [입력값, 입력값변경] = useState("");
   return (
     <div className="App">
       <div className="black-nav">
@@ -49,9 +50,10 @@ function App() {
             >
               {글제목[i]}
               <span
-                onClick={() => {
+                onClick={(e) => {
                   let copy3 = [...따봉];
                   copy3[i] = copy3[i] + 1;
+                  e.stopPropagation();
                   따봉변경(copy3);
                 }}
               >
@@ -63,6 +65,27 @@ function App() {
           </div>
         );
       })}
+
+      {/* 글제목 배열에 추가 되야함 */}
+      {/* 버튼을 누름 => 배열에 새로 추가됨 => 글이 새로 발행됨  */}
+      {/* 추가 :push  */}
+      {/* 삭제: splice */}
+      <input
+        onChange={(e) => {
+          입력값변경(e.target.value);
+          console.log(입력값);
+        }}
+      ></input>
+      <button
+        onClick={() => {
+          let copy4 = [...글제목];
+          글제목변경.push();
+          console.log(copy4);
+        }}
+      >
+        글 발행
+      </button>
+
       {modal ? (
         <Modal
           글제목={글제목}
