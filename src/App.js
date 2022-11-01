@@ -18,7 +18,6 @@ function App() {
       <div className="black-nav">
         <h4>React Blog</h4>
       </div>
-
       <button
         onClick={() => {
           let copy2 = [...글제목];
@@ -28,7 +27,6 @@ function App() {
       >
         가나다 순 정렬
       </button>
-
       <button
         onClick={() => {
           let copy = [...글제목];
@@ -38,7 +36,6 @@ function App() {
       >
         수정
       </button>
-
       {글제목.map(function (item, i) {
         return (
           <div className="list">
@@ -65,7 +62,6 @@ function App() {
           </div>
         );
       })}
-
       {/* 글제목 배열에 추가 되야함 */}
       {/* 버튼을 누름 => 배열에 새로 추가됨 => 글이 새로 발행됨  */}
       {/* 추가 :push  */}
@@ -78,9 +74,8 @@ function App() {
       ></input>
       <button
         onClick={() => {
-          let copy4 = [...글제목];
-          글제목변경.push();
-          console.log(copy4);
+          글제목변경(글제목.concat(입력값));
+          console.log(글제목);
         }}
       >
         글 발행
