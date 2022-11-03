@@ -2,14 +2,13 @@ import "./App.css";
 import { useState } from "react";
 
 function App() {
-  let post = "강남 우동 맛집";
   let [글제목, 글제목변경] = useState([
     "남자 코트 추천",
     "강남 우동맛집",
     "파이썬 독학",
   ]);
 
-  let [따봉, 따봉변경] = useState([0, 0, 0]);
+  let [따봉, 따봉변경] = useState([0, 0, 0, 0, 0]);
   let [modal, setModal] = useState(false);
   let [modalTitle, setModalTitle] = useState(0);
   let [입력값, 입력값변경] = useState("");
@@ -58,14 +57,21 @@ function App() {
               </span>
               {따봉[i]}
             </h4>
+            <button
+              onClick={() => {
+                let copy4 = [...글제목];
+                copy4.splice(i, 1);
+                글제목변경(copy4);
+              }}
+            >
+              글 삭제
+            </button>
             <p>10월 14일 발행</p>
           </div>
         );
       })}
-      {/* 글제목 배열에 추가 되야함 */}
-      {/* 버튼을 누름 => 배열에 새로 추가됨 => 글이 새로 발행됨  */}
-      {/* 추가 :push  */}
-      {/* 삭제: splice */}
+
+      {/* 게시글 생성  */}
       <input
         onChange={(e) => {
           입력값변경(e.target.value);
@@ -80,7 +86,6 @@ function App() {
       >
         글 발행
       </button>
-
       {modal ? (
         <Modal
           글제목={글제목}
