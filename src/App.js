@@ -80,7 +80,9 @@ function App() {
       ></input>
       <button
         onClick={() => {
-          글제목변경(글제목.concat(입력값));
+          let copy5 = [...글제목];
+          copy5.unshift(입력값);
+          글제목변경(copy5);
           console.log(글제목);
         }}
       >
