@@ -71,19 +71,21 @@ function App() {
         );
       })}
 
-      {/* 게시글 생성  */}
       <input
         onChange={(e) => {
           입력값변경(e.target.value);
           console.log(입력값);
         }}
       ></input>
+      {/* 게시글 생성 (unshift()위에서 부터 요소 생성 ) */}
       <button
         onClick={() => {
+          if (입력값.length == 0) {
+            return alert("제목을 입력하세요");
+          }
           let copy5 = [...글제목];
           copy5.unshift(입력값);
           글제목변경(copy5);
-          console.log(글제목);
         }}
       >
         글 발행
